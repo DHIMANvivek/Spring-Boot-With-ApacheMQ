@@ -33,6 +33,7 @@ public class Consumer {
 					TextMessage textmessage = (TextMessage) message;
 					try {
 						System.out.println(textmessage.getText());
+						textmessage.acknowledge();
 					} catch (JMSException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
