@@ -16,18 +16,18 @@ public class Consumer {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		ConnectionFactory factory = new ActiveMQConnectionFactory("admin","admin","tcp://localhost:61616");
-		
+
+		ConnectionFactory factory = new ActiveMQConnectionFactory("admin", "admin", "tcp://localhost:61616");
+
 		try {
 			Connection connection = factory.createConnection();
 			connection.start();
-			
-			Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE)	;
+
+			Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 			Destination destination = session.createQueue("vivek");
 			MessageConsumer consumer = session.createConsumer(destination);
 			consumer.setMessageListener(new MessageListener() {
-				
+
 				public void onMessage(Message message) {
 					// TODO Auto-generated method stub
 					TextMessage textmessage = (TextMessage) message;
@@ -39,15 +39,11 @@ public class Consumer {
 					}
 				}
 			});
-			
-			
-					
+
 		} catch (JMSException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 
 	}
 
